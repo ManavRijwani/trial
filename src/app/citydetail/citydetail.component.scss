@@ -1,0 +1,22 @@
+.city-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .city-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .city-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail {
+    margin-bottom: 4px;
+  }

@@ -1,0 +1,51 @@
+
+<!-- <ul>
+    <li *ngFor="let city of cities ">
+        {{ city.intCityID }}
+        {{ city.strCityName }}
+        {{ city.intStateID }}
+        {{ city.intCountryID }}
+        
+    </li>
+</ul> -->
+<!-- city.component.html -->
+
+<h1>City Component</h1>
+
+<!-- search method 1 -->
+<!-- <div class="search-container">
+<input type="text" [(ngModel)]="searchTerm" placeholder="Search by city name..." />
+<button (click)="search()">Search</button>
+</div> -->
+
+<!-- search method 2 -->
+<div class="search-container">
+<input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search by city name..."/>
+<div *ngFor="let city of filteredCities">
+    <div class="city-card">
+        <div class="city-name">{{ city.strCityName }}</div>
+        <div class="city-details">
+        <span class="detail">City ID: {{ city.intCityID }}</span>
+        <span class="detail">State ID: {{ city.intStateID }}</span>
+        <span class="detail">Country ID: {{ city.intCountryID }}</span>
+        </div>
+        <button (click)="deleteCity(city.intCityID)">Delete</button>
+        <button (click)="update(city.intCityID)">Update</button>
+    </div>
+</div>
+</div>
+
+<div *ngFor="let city of cities">
+    <div class="city-card">
+        <div class="city-name">{{ city.strCityName }}</div>
+        <div class="city-details">
+        <span class="detail">City ID: {{ city.intCityID }}</span>
+        <span class="detail">State ID: {{ city.intStateID }}</span>
+        <span class="detail">Country ID: {{ city.intCountryID }}</span>
+        </div>
+        <button (click)="deleteCity(city.intCityID)">Delete</button>
+        <button (click)="update(city.intCityID)">Update</button>
+    </div>
+</div>
+  
+<a routerLink="/home">Go to Home</a>

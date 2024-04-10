@@ -1,0 +1,85 @@
+<!-- <div class="login-container">
+    <h2>Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        <div class="form-group">
+            <label for="username">Username</label>
+        <input type="text" formControlName="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+        <label for="username">E-mail</label>   
+        <input type="email" formControlName="email" placeholder="email">
+        </div>
+        <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="number" formControlName="contact" placeholder="contact">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+        <input type="password" formControlName="password" placeholder="Password">
+        </div>
+        <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+      </form>
+</div>
+<div class="login-button">
+   Already Registered <button routerLink="/loginform">Log In</button>
+</div>     -->
+
+<!-- form with validation -->
+<div class="login-container">
+    <h2>Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" placeholder="Username">
+            <div *ngIf="registrationForm.get('username').invalid && (registrationForm.get('username').dirty || registrationForm.get('username').touched)">
+                <small class="text-danger" *ngIf="registrationForm.get('username').errors?.['duplicate']">Username is already taken.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('username').errors?.['required']">Username is required.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('username').errors?.['minlength']">Username must be at least 3 characters.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" formControlName="email" placeholder="Email">
+            <div *ngIf="registrationForm.get('email').invalid && (registrationForm.get('email').dirty || registrationForm.get('email').touched)">
+                <small class="text-danger" *ngIf="registrationForm.get('email').errors?.['required']">Email is required.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('email').errors?.['email']">Invalid email format.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" formControlName="contact" placeholder="Contact">
+            <div *ngIf="registrationForm.get('contact').invalid && (registrationForm.get('contact').dirty || registrationForm.get('contact').touched)">
+                <small class="text-danger" *ngIf="registrationForm.get('contact').errors?.['required']">Contact is required.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('contact').errors?.['pattern']">Contact must be a 10-digit number.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" placeholder="Password">
+            <div *ngIf="registrationForm.get('password').invalid && (registrationForm.get('password').dirty || registrationForm.get('password').touched)">
+                <small class="text-danger" *ngIf="registrationForm.get('password').errors?.['required']">Password is required.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('password').errors?.['invalidPassword']">Password must contain at least one character, one number, and one special character.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('password').errors?.['minlength']">Password must be at least 6 characters.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+            <div *ngIf="registrationForm.get('confirmPassword').invalid && (registrationForm.get('confirmPassword').dirty || registrationForm.get('confirmPassword').touched)">
+                <small class="text-danger" *ngIf="registrationForm.get('confirmPassword').errors?.['required']">Confirm Password is required.</small>
+            </div>
+                <!-- <small class="text-danger" *ngIf="registrationForm.get('confirmPassword').errors?.['passwordsNotMatch']">Passwords do not match.</small> -->
+                <small class="text-danger" *ngIf="registrationForm.errors?.['passwordMatch'] && registrationForm.get('confirmPassword').touched">Passwords don't match.</small>
+            </div>
+        
+        <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+    </form>
+</div>
+
+
+
+
+
+
+ 
+

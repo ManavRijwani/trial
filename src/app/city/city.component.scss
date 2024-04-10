@@ -1,0 +1,48 @@
+/* city.component.css */
+.city-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .city-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .city-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail {
+    margin-bottom: 4px;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+    margin-left: 450px;
+}
+
+.search-container input {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.search-container button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
