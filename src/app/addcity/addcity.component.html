@@ -5,15 +5,28 @@
   <input type="text" id="strCityName" formControlName="strCityName">
 
   <label for="intStateID">State ID:</label>
-  <input type="number" id="intStateID" formControlName="intStateID">
+  <!-- <input type="number" id="intStateID" formControlName="intStateID"> -->
+  <select formControlName="intStateID" (ngModelChange) = "onchange()">
+    <option *ngFor="let state of states" [value]="state.intStateID">  {{ state.strStateName }}</option>
+  </select>
 
-  <label for="CountryId">Country ID:</label>
-  <input type="number" id="CountryId" formControlName="intCountryID">
+  <label for="intCountryID">Country ID:</label>
+  <!-- <input type="number" id="CountryId" formControlName="intCountryID"> -->
+
+  <!-- method1 -->
+  <select formControlName="intCountryID">
+    <option *ngFor="let abc of ctr" [value]="abc">{{ abc }}</option> 
+  </select>
+
+
+  <!-- method 2 -->
+  <!-- <select formControlName="intCountryID">
+    <option *ngFor="let abc of ctr" [value]="abc">{{ abc.strcountryName }}</option> 
+  </select> -->
 
   <br> <br>
-  <button type="submit" [disabled]="cityForm.invalid">Add City</button>
+  <!-- <button type="submit" [disabled]="cityForm.invalid">Add City</button> -->
 </form>
 
 <br> <br>
 <a routerLink="/home">Go to Home</a>
-

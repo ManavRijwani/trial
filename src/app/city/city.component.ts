@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../services/city.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-city',
@@ -15,17 +16,19 @@ export class CityComponent {
   //method 1
  // searchTerm: string = '';//for filtering
 
+ constructor(private cityservice:CityService,private route:Router,private authService:AuthService){}
  //method2
   filteredCities: City[] = [];
    searchTerm: string = '';
 
-  
-  
+  Role:string;
+ 
    
-  constructor(private cityservice:CityService,private route:Router){}
 
   ngOnInit(): void {
     this.getCities();
+    this.Role=this.authService.decodeToken().role;
+    console.log("Rolee"+this.Role);
   }
 
   getCities(){
@@ -67,11 +70,21 @@ export class CityComponent {
 
   //search method 2
   onSearch(): void {
-    this.filteredCities = this.cities.filter(city =>
-      city.strCityName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    if(this.searchTerm.trim()===''){
+      this.filteredCities=[];
+    }else{
+      this.filteredCities = this.cities.filter(city =>
+        city.strCityName.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    
+  //   if (this.searchInput.trim() === '') {
+  //     return this.cities; // Display all cities when search input is empty
+  // } else {
+  //     return this.cities.filter(city => city.toLowerCase().includes(this.searchInput.toLowerCase()));
+  // }
   }
 
-  
+
   }
 

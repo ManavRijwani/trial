@@ -26,7 +26,7 @@ export class LoginFormComponent {
         // localStorage.setItem('jwtToken', token);
         // // Redirect or perform any necessary actions
         this.router.navigate(['/home']);
-
+        this.authService.decodeToken().role;
       },
       // error: (error) => {
       //   // Handle authentication error

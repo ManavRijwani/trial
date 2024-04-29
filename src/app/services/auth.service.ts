@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { firstValueFrom } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -13,9 +14,10 @@ import { firstValueFrom } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7006/api/Auth/login'; // Update with your API URL
-  private api = 'https://localhost:7006/api/Auth/Register';
-  private api2 = 'https://localhost:7006/api';
+  private apiUrl = 'http://localhost:5031/api/Auth/login'; // Update with your API URL
+  private api = 'http://localhost:5031/api/Auth/Register';
+  private api2 = 'http://localhost:5031/api';
+  private api3 = 'http://localhost:5031/api/Auth';
   constructor(private http: HttpClient) { }
 
   
@@ -25,6 +27,7 @@ export class AuthService {
       tap(response => {
         if(response && response.token)
           localStorage.setItem('jwtToken', response.token);
+          // localStorage.setItem('username',response.username);
       })
     );
   }
@@ -45,6 +48,16 @@ export class AuthService {
     return this.http.post(this.api, { username, email,contact, password });
   }
 
+  getUserByID(id:number){
+    return this.http.get(`${this.api3}/${id}`);
+  }
+
+
+  decodeToken(){
+    var decode=new JwtHelperService();
+    return decode.decodeToken(this.getToken());
+   
+  }
   //to check unique username
   
 //   checkUsernameExists(username: string): Promise<boolean> {

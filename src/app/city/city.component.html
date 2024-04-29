@@ -29,7 +29,7 @@
         <span class="detail">State ID: {{ city.intStateID }}</span>
         <span class="detail">Country ID: {{ city.intCountryID }}</span>
         </div>
-        <button (click)="deleteCity(city.intCityID)">Delete</button>
+        <button *ngIf="Role == 'admin'" (click)="deleteCity(city.intCityID)">Delete</button>
         <button (click)="update(city.intCityID)">Update</button>
     </div>
 </div>
@@ -43,7 +43,7 @@
         <span class="detail">State ID: {{ city.intStateID }}</span>
         <span class="detail">Country ID: {{ city.intCountryID }}</span>
         </div>
-        <button (click)="deleteCity(city.intCityID)">Delete</button>
+        <button *ngIf="Role == 'admin'" (click)="deleteCity(city.intCityID)">Delete</button>
         <button (click)="update(city.intCityID)">Update</button>
     </div>
 </div>
