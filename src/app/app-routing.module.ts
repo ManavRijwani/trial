@@ -8,6 +8,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './AuthGuard';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { CitydetailComponent } from './citydetail/citydetail.component';
+import { Home2Component } from './home2/home2.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 //import { AuthGuard } from './AuthGuard';
 
@@ -35,6 +37,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'home2',
+    component: Home2Component,
+  },
+  {
     path: 'city',
     component: CityComponent,
     canActivate: [AuthGuard]
@@ -55,7 +61,10 @@ const routes: Routes = [
     path: 'city-detail/:id', 
     component: CitydetailComponent,
     canActivate: [AuthGuard]
-
+  },
+  { 
+    path: 'tabs', 
+    component: TabsComponent,
   }
 
 ];

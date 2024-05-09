@@ -21,16 +21,39 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   
+// login without remember me
+  // login(username: string, password: string): Observable<any> {
+  //   return this.http.post<any>(this.apiUrl, { username, password }).pipe(
+  //     tap(response => {
+  //       if(response && response.token)
+  //       // if(isRemember)
+  //         localStorage.setItem('jwtToken', response.token);
+  //         // localStorage.setItem('username',response.username);
+  //     })
+  //   );
+  // }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string, rememberMe: boolean): Observable<any> {
     return this.http.post<any>(this.apiUrl, { username, password }).pipe(
-      tap(response => {
-        if(response && response.token)
-          localStorage.setItem('jwtToken', response.token);
-          // localStorage.setItem('username',response.username);
-      })
+        tap(response => {
+            if (response && response.token) {
+                if (rememberMe) {
+                    // Store token in localStorage with an expiry date
+                    const expiresAt = new Date();
+                    expiresAt.setHours(expiresAt.getHours() + 24); // Token expires in 24 hours
+                    localStorage.setItem('jwtToken', response.token);
+                    localStorage.setItem('tokenExpiry', expiresAt.getTime().toString());
+                } else {
+                    // Store token in localStorage without an expiry date
+                    localStorage.setItem('jwtToken', response.token);
+                    localStorage.removeItem('tokenExpiry');
+                }
+            }
+        })
     );
-  }
+}
+
+
 
   getToken(): string {
     return localStorage.getItem('jwtToken');

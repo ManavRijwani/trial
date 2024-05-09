@@ -93,4 +93,8 @@ export class RegisterFormComponent {
       );
     }
   }
+
+  onReset(){
+    this.registrationForm.reset();
+  }
 }

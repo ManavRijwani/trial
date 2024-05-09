@@ -72,7 +72,8 @@
                 <small class="text-danger" *ngIf="registrationForm.errors?.['passwordMatch'] && registrationForm.get('confirmPassword').touched">Passwords don't match.</small>
             </div>
         
-        <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+        <button type="submit" [disabled]="!registrationForm.valid">Register</button> &nbsp; &nbsp;
+        <button type="reset">Reset</button>
     </form>
 </div>
 

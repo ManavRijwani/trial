@@ -1,0 +1,38 @@
+<!-- navbar option1 -->
+<!-- <mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My Angular App</span>
+  </mat-toolbar>
+   -->
+
+
+   <!-- navbar option 2 -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<nav class="navbar">
+    <div class="navbar-container">
+    
+     <div *ngIf="user !==''" class="navbar-text">
+        Welcome, {{ user }}!</div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" (click)="toggleSettingsPanel()">Menu</a>
+        </li>
+        <li>
+            <i class="material-icons" [routerLink]="['/city']" routerLinkActive="router-link-active" >home</i>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+ 
+
+    <div *ngIf="showSettingsPanel" class="settings-panel"> 
+    <ul>
+      <li><a (click)="clear()" [routerLink]="['/loginform']" routerLinkActive="router-link-active" >Logout</a></li>
+      <li><a [routerLink]="['/city']" routerLinkActive="router-link-active" >City Component</a></li>
+      <li id="homee" (click)="toggleSettingsPanel()"><a>Back</a></li>
+    </ul>
+  </div>
+ 

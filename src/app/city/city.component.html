@@ -11,7 +11,9 @@
 <!-- city.component.html -->
 
 <h1>City Component</h1>
-
+<button (click)="exportToPDF()">Export to PDF</button>
+&nbsp; &nbsp;
+<button (click)="exportToExcel()">Export to Excel</button>
 <!-- search method 1 -->
 <!-- <div class="search-container">
 <input type="text" [(ngModel)]="searchTerm" placeholder="Search by city name..." />
@@ -47,5 +49,27 @@
         <button (click)="update(city.intCityID)">Update</button>
     </div>
 </div>
+
+<kendo-pdf-export #pdf>
+    <div *ngFor="let city of cities">
+      <div class="city-card">
+        <div class="city-name">{{ city.strCityName }}</div>
+        <div class="city-details">
+          <span class="detail">City ID: {{ city.intCityID }}</span>
+          <span class="detail">State ID: {{ city.intStateID }}</span>
+          <span class="detail">Country ID: {{ city.intCountryID }}</span>
+        </div>
+      </div>
+    </div>
+  </kendo-pdf-export>
+ 
+
+   <!-- For Loader -->
+  <button class="spinner-button" (click)="showLoader()">
+    Show Loader
+    <div *ngIf="load" class="cssload-speeding-wheel"></div>  
+  </button>
   
+  
+
 <a routerLink="/home">Go to Home</a>
