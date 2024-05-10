@@ -21,6 +21,14 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { customInterceptor } from './custom.interceptor';
 import { CitydetailComponent } from './citydetail/citydetail.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Home2Component } from './home2/home2.component';
+import { TabsComponent } from './tabs/tabs.component';
+
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @NgModule({
@@ -33,7 +41,11 @@ import { CitydetailComponent } from './citydetail/citydetail.component';
     LoginFormComponent,
     HeaderComponent,
     RegisterFormComponent,
-    CitydetailComponent
+    CitydetailComponent,
+    NavbarComponent,
+    Home2Component,
+    TabsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,13 +54,20 @@ import { CitydetailComponent } from './citydetail/citydetail.component';
     NgFor,
     ReactiveFormsModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    PDFExportModule,
+    ExcelExportModule,
+    
+
+
+
     
     
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: customInterceptor, multi: true },
     AuthService,
+    NgxSpinnerService,
     provideAnimationsAsync()
      
   ],
