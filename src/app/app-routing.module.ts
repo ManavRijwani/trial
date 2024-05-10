@@ -10,6 +10,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { CitydetailComponent } from './citydetail/citydetail.component';
 import { Home2Component } from './home2/home2.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 //import { AuthGuard } from './AuthGuard';
 
@@ -65,6 +66,10 @@ const routes: Routes = [
   { 
     path: 'tabs', 
     component: TabsComponent,
+  },
+  { 
+    path: 'navbar', 
+    component: NavbarComponent,
   }
 
 ];

@@ -29,6 +29,8 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 @NgModule({
@@ -57,12 +59,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
     MatToolbarModule,
     PDFExportModule,
     ExcelExportModule,
-    
-
-
-
-    
-    
+    MatTabsModule,
+    MatStepperModule    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: customInterceptor, multi: true },
